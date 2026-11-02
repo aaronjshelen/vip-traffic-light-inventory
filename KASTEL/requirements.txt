@@ -1,0 +1,9 @@
+# Traffic-light detection baseline.
+# NOTE: for an NVIDIA GPU install the CUDA build of torch FIRST, e.g. (RTX 50xx / Blackwell):
+#   pip install --index-url https://download.pytorch.org/whl/cu128 torch torchvision
+# then: pip install -r requirements.txt
+
+ultralytics>=8.3
+opencv-python>=4.8
+numpy>=1.24
+tqdm>=4.65

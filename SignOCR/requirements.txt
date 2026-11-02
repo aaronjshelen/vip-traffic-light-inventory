@@ -1,0 +1,22 @@
+# SignOCR — directional-sign OCR pipeline (STANDALONE, separate from KASTEL).
+#
+# This pipeline runs in its OWN venv (SignOCR/.venv) created with
+# --system-site-packages so it reuses the global GPU torch build WITHOUT
+# re-downloading it, while keeping its extra deps out of the KASTEL env.
+#
+# Setup (from SignOCR/):
+#   python -m venv .venv --system-site-packages      # inherits global torch+ultralytics (GPU)
+#   .venv/Scripts/python -m pip install easyocr
+#
+# Models auto-download on first run:
+#   - YOLO-World open-vocab detector: yolov8x-worldv2.pt (~338MB, ultralytics cache)
+#   - EasyOCR detection + recognition models (~80MB, ~/.EasyOCR)
+#
+# NOTE on PaddleOCR: PaddleOCR was the preferred engine, but paddlex 3.7 hard-imports
+# modelscope which eagerly imports torch and triggers a Windows DLL conflict
+# (WinError 127) against the cu128 torch build on Python 3.13. EasyOCR (torch-based,
+# reuses the GPU build) is used instead. The ocr.py adapter still supports PaddleOCR
+# if a compatible environment becomes available.
+
+easyocr>=1.7
+# inherited from the global env (do NOT reinstall): torch (cu128), torchvision, ultralytics, opencv-python, numpy, tqdm

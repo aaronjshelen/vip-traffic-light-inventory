@@ -1,0 +1,48 @@
+# Local tooling / notes
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Third-party source clones (see README for clone commands)
+KASTEL/third_party/
+SignOCR/third_party/
+
+# Model weights (downloaded, too large for git)
+*.pt
+*.pth
+*.safetensors
+*.onnx
+
+# Raw data (video, GPS, IMU) - too large / not ours to redistribute
+Recordings/
+*.mp4
+*.avi
+*.mov
+
+# Bulky or regenerable outputs
+**/crops/
+KASTEL/outputs/gps_full/labeling/frames/
+KASTEL/outputs/gps_full/inventory/assets/
+KASTEL/outputs/moge_test_frame.jpg
+SignOCR/outputs/clip_0718_0820/
+*.log
+*.out
+
+# Course template (not ours)
+2025-10-08 SCI-VIP tamplate.pptx
+
+# Presentation / deck files
+presentation/
+*.pptx
+
+# Empty results template
+KASTEL/BASELINE_RESULTS.md
+
+# Pipeline outputs (regenerate locally)
+KASTEL/outputs/
+SignOCR/outputs/
